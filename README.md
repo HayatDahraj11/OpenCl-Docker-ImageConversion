@@ -17,7 +17,7 @@ The docker file installs the following in an isolated Ubuntu Linux container:
 ## Get Started:
 
 1. Download <a href = "https://www.docker.com/products/docker-desktop/" > Docker Desktop </a>. (verify succesfull installation by running `docker version` command on command line).
-2. Clone this repo using `git clone https://github.com/Umar-Waseem/OpenCL-and-Docker` OR just download the zipped code.
+2. Clone this repo using `git clone https://github.com/HayatDahraj11/OpenCL-and-Docker` OR just download the zipped code.
 3. Open the downloaded / cloned repo in a command line or better, open in vs code.
 4. Run `docker build -t opencl-image .` (can take 3 - 8 minutes)
 5. After its done, run `docker run -it opencl-image`
