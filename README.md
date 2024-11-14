@@ -1,32 +1,27 @@
-# OpenCl-Docker-ImageConversion
-A high-performance tool for converting RGB images to grayscale using OpenCL for GPU or CPU acceleration, designed for fast and efficient image processing.
+# OpenCL-and-Docker
 
+Docker comes in place when you have to go through the pain of installation and management of dependencies.
+OpenCL (Open Computing Language) is a framework which allows you to write programs for hetrogeneous platforms.
 
+I prepared this <a href = "https://github.com/Umar-Waseem/OpenCL-and-Docker/blob/main/dockerfile" > Dockerfile </a> to help create an environment with a Ubuntu environment that has OpenCL set up.
 
+The docker file installs the following in an isolated Ubuntu Linux container:
+- `pocl-opencl-icd`: CPU-based OpenCL implementation ( used for developing and running OpenCL applications on systems that don't have a dedicated GPU ).
 
-# OpenCL RGB to Grayscale Image Converter
+- `ocl-icd-opencl-dev`: OpenCL development headers and libraries
 
-This project is a high-performance RGB-to-grayscale image converter using **OpenCL** to leverage GPU or CPU parallel processing. It efficiently processes images by taking an input RGB image, converting it to grayscale, and outputting a new image file.
+- `gcc`: C compiler
 
-## Key Features
-- **High-Performance**: Utilizes OpenCL for parallel processing, enabling fast image processing by harnessing the power of GPUs or multi-core CPUs.
-- **Cross-Platform Compatibility**: Compatible with any platform that supports OpenCL, making it a versatile tool.
-- **Lightweight**: Uses `stb_image` for loading images and `stb_image_write` for saving them, keeping the setup minimal and easy to integrate.
+- `clinfo`: This is a command-line utility that displays information about the available OpenCL platforms and devices 
 
-## How It Works
-1. **Load the Image**: Reads an input RGB image using `stb_image`.
-2. **OpenCL Initialization**: Sets up an OpenCL context and command queue, creating buffers for the input RGB data and the output grayscale data.
-3. **Grayscale Conversion**: The `rgb_to_grayscale` kernel calculates the grayscale value for each pixel using a perceptual formula to maintain natural brightness.
-4. **Save the Output**: The grayscale image is saved using `stb_image_write`.
+## Get Started:
 
-## Dependencies
-- **OpenCL**: Ensure that OpenCL is installed and configured on your machine to take advantage of GPU or CPU acceleration.
-- **stb_image and stb_image_write**: These lightweight libraries are included for image loading and saving.
+1. Download <a href = "https://www.docker.com/products/docker-desktop/" > Docker Desktop </a>. (verify succesfull installation by running `docker version` command on command line).
+2. Clone this repo using `git clone https://github.com/Umar-Waseem/OpenCL-and-Docker` OR just download the zipped code.
+3. Open the downloaded / cloned repo in a command line or better, open in vs code.
+4. Run `docker build -t opencl-image .` (can take 3 - 8 minutes)
+5. After its done, run `docker run -it opencl-image`
+6. You start with `/app` directory. Verify that there is a `host.c` file in the directory.
+7. Run `gcc host.c -o host -lOpenCL` to compile the code.
+8. `./host` to run.
 
-## Usage Instructions
-1. Clone the repository and compile the program, linking the OpenCL library.
-2. Place an RGB image file as `input.jpg` in the project directory.
-3. Run the program, and it will output a grayscale version as `output.jpg`.
-
-## About
-Created by Hayat Sikandar , this project showcases a passion for high-performance computing and image processing, demonstrating the power of OpenCL for efficient data handling and transformation.
